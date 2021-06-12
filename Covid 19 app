@@ -25,6 +25,11 @@ url = 'https://api.covid19api.com/countries'
 r = requests.get(url)
 df0 = json_normalize(r.json())
 
+
+
+
+##def new(unc)
+
 top_row = pd.DataFrame({'Country': ['Select a Country'], 'Slug': ['Empty'], 'ISO2': ['E']})
 # Concat with old DataFrame and reset the Index.
 df0 = pd.concat([top_row, df0]).reset_index(drop=True)
@@ -46,7 +51,7 @@ if country != 'Select a Country':
     layout = go.Layout(
         title=country + '\'s ' + graph_type + ' cases Data',
         xaxis=dict(title='Date'),
-        yaxis=dict(title='Cases'), )
+        yaxis=dict(title='Number of cases'), )
     fig.update_layout(dict1=layout, overwrite=True)
     fig.add_trace(go.Scatter(x=df.Date, y=df.Cases, mode='lines', name=country))
 
